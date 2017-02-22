@@ -1,0 +1,24 @@
+# Git Auto Complete
+if [ -f ~/.git-completion.bash ]; then
+  . ~/.git-completion.bash
+fi
+
+
+# Drush Auto Complete
+if [ -f ~/.drush.complete.sh ]; then
+  . ~/.drush.complete.sh
+fi
+
+# Custom Prompt
+export PS1='\[\033[38;5;35m\]\u \[$(tput sgr0)\]\[\033[38;5;15m\]\w\[\033[38;5;32m\]$(__git_ps1)\[\033[0m\]$ '
+
+# Different colours for live servers
+function tabc() {
+NAME=$1; if [ -z "$NAME" ]; then NAME="Pro"; fi
+osascript -e "tell application \"Terminal\" to set current settings of front window to settings set \"$NAME\""
+}
+
+# Helpful Aliases
+alias sassy="bundle exec compass watch"
+alias mysql="mysql --host=localhost -uroot -proot"
+alias solrindex="drush solr-delete-index && drush solr-mark-all && drush solr-index"
